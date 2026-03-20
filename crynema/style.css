@@ -1,0 +1,367 @@
+:root {
+  --primary-color: #f5c518; /* Màu vàng thương hiệu */
+  --bg-dark: #121212;      /* Màu nền chính */
+  --bg-card: #1f1f1f;      /* Màu nền card */
+  --text-main: #ffffff;
+  --text-muted: #b3b3b3;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* HEADER - Làm mờ nền (Glassmorphism) */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 6%;
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333;
+}
+
+.logo {
+  text-decoration: none; /* Xóa gạch chân tím/xanh */
+  color: #f50000;        /* Giữ màu đỏ thương hiệu */
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  
+  /* Sửa lỗi lệch khoảng cách */
+  display: inline-block; 
+  line-height: 1;        /* Đảm bảo chiều cao dòng không làm lệch header */
+  padding: 5px 0;       /* Chỉnh khoảng cách trên dưới nếu cần */
+}
+
+/* Thêm hiệu ứng khi di chuột vào cho chuyên nghiệp */
+.logo:hover {
+  color: #ff1e2a;        /* Sáng lên một chút khi hover */
+  text-decoration: none; /* Đảm bảo không bị hiện lại gạch chân */
+}
+
+.header nav a {
+  color: white;
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.header nav a:hover {
+  color: var(--primary-color);
+}
+
+/* HERO SECTION - Làm cao và thoáng hơn */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.6), var(--bg-dark)),
+              url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop') center/cover;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #eee;
+}
+
+/* CONTAINER & LAYOUT */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 350px; /* Sidebar rộng hơn chút */
+  gap: 40px;
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ARTICLE CARD */
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.card-body {
+  padding: 40px;
+}
+
+.card-body h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--primary-color);
+  padding-left: 15px;
+}
+
+/* TRAILER BOX */
+.trailer-box {
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 30px 0;
+}
+
+.trailer-box video {
+  width: 100%;
+  display: block;
+}
+
+/* MOVIE INFO BOX */
+.movie-info {
+  background: #2a2a2a;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 30px;
+  border: 1px solid #444;
+}
+
+.movie-info h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+.movie-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.movie-info li {
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #444;
+  padding-bottom: 5px;
+}
+
+.movie-info b {
+  color: var(--primary-color);
+  margin-right: 10px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar h3 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  padding-left: 10px;
+  color: var(--primary-color);
+}
+
+/* FOOTER */
+.footer {
+  background: #111;
+  padding: 50px 20px;
+  margin-top: 80px;
+  border-top: 1px solid #333;
+  text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+  }
+}
+/* Chỉ đổi màu link bên trong phần nội dung bài viết */
+.card-body a {
+  color: #f5c518;          /* Màu vàng đặc trưng của bạn */
+  text-decoration: none;   /* Bỏ gạch chân cho thoáng */
+  font-weight: 500;        /* Cho chữ đậm lên một chút để dễ đọc */
+  border-bottom: 1px solid rgba(245, 197, 24, 0.3); /* Gạch chân mờ nghệ thuật */
+  transition: 0.3s;        /* Hiệu ứng mượt mà */
+}
+
+/* Hiệu ứng khi di chuột vào (Hover) */
+.card-body a:hover {
+  color: #ffffff;          /* Chuyển sang trắng khi hover */
+  border-bottom: 1px solid #ffffff; /* Gạch chân sáng lên */
+  background-color: rgba(245, 197, 24, 0.1); /* Nền hơi vàng nhẹ */
+}
+/* list grid ảnh
+/* Container tổng của danh sách phim */
+.movie-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Khoảng cách giữa các phim */
+  margin-top: 20px;
+}
+
+/* Từng dòng phim */
+.movie-item {
+  display: flex;
+  align-items: center;
+  background: #1a1a1a; /* Nền tối hơn card một chút */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 0.3s;
+  border: 1px solid #333;
+}
+
+.movie-item:hover {
+  transform: translateX(10px); /* Hiệu ứng trượt nhẹ khi di chuột */
+  border-color: #f5c518;
+}
+
+/* Khung chứa ảnh nhỏ */
+.movie-thumb {
+  width: 100px; /* Độ rộng ảnh thumbnail */
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.movie-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Giữ ảnh không bị méo */
+}
+
+/* Nội dung bên phải ảnh */
+.movie-content {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.movie-rank {
+  color: #f5c518;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.movie-title {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.movie-item:hover .movie-title {
+  color: #f5c518;
+}
+
+/* Link quay lại */
+.navigation-links {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+}
+
+/* Tối ưu bổ sung cho di động */
+@media (max-width: 768px) {
+  /* 1. Header: Cho phép menu quấn dòng nếu quá dài */
+  .header {
+    padding: 10px 4%;
+    flex-direction: column; /* Logo ở trên, nav ở dưới */
+    gap: 15px;
+  }
+
+  .header nav {
+    display: flex;
+    flex-wrap: wrap; /* Tránh tràn màn hình ngang */
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header nav a {
+    margin-left: 0; /* Bỏ margin cũ */
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  /* 2. Card Body: Giảm padding để có thêm không gian chứa nội dung */
+  .card-body {
+    padding: 20px;
+  }
+
+  /* 3. Movie Grid: Ảnh nhỏ hơn một chút trên mobile */
+  .movie-thumb {
+    width: 80px;
+    height: 50px;
+  }
+
+  .movie-content {
+    padding: 0 10px;
+    font-size: 0.9rem;
+  }
+
+  /* 4. Hero Section: Giảm khoảng cách để đỡ phải cuộn nhiều */
+  .hero {
+    padding: 60px 20px;
+  }
+}
+
+/* Tối ưu cho màn hình cực nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+  .movie-item {
+    flex-direction: column; /* Chuyển ảnh lên trên tiêu đề */
+    align-items: flex-start;
+  }
+  
+  .movie-thumb {
+    width: 100%;
+    height: 150px; /* Ảnh to ra theo chiều ngang */
+  }
+  
+  .movie-content {
+    padding: 10px;
+  }
+}
